@@ -1,0 +1,193 @@
+.landngPage{
+    width: 100%;
+}
+
+
+.searchBarBox{
+    padding-right: 3rem;
+    width: 30rem;
+    height: 3rem;
+    display: flex;
+    background-color: #e7e8eb;
+    padding-left: 1.1rem;
+}
+.searchIcon{
+    height: 3rem;
+}
+.MainPage{
+    display: flex;
+    width: 100%   ;
+  
+}
+.searchBarWrapper{
+    background-color: white;
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+}
+.searchBar{
+    height: 3rem;
+    width: 30rem;
+    border: none;
+    font-size: 1.2rem;
+    // border-color: #e7e8eb;
+    background-color: #e7e8eb;
+}
+.profilepic{
+    width: 1.7rem;
+    height: 1.7rem;
+    border-radius: 1rem;
+}
+.reminders{
+    width: 2rem;
+    height: 2rem;
+    background-color: #c2c9d5;
+    border-radius: 1rem;
+    text-align: center;
+    justify-content: center;
+}
+.reminderIcon{
+    margin: auto;
+    height: 1.3rem;
+}
+.searchBarWrapper{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 3rem;
+}
+.landngPageSecondBox{
+    background-color: #e7e8eb;
+    padding-right: 4rem;
+    padding-left: 4rem;
+}
+.rightbarBox{
+    display: flex;
+    gap: 1rem;
+}
+.tableHdngRow{
+    display: flex;
+    width: 100%;
+}
+.tableHdng, .tabledata{
+    width: 14.29%;
+    text-align: start;
+    height: 2.0rem;
+}
+.firstRowLndngPage{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 4rem;
+    padding-top: 4rem;
+
+}
+.transcribeButton{
+    width: 8rem;
+    height: 2.5rem;
+    background-color: blue;
+  color: white;
+  border-radius: 0.5rem;
+  border: none;
+  font: Inter;
+  font-weight: 500;
+}
+.secondRowLndngPage{
+    display: flex;
+    gap: 2rem;
+    padding-bottom: 2rem;
+    
+}
+.uploadedFileWrapper,.transcribedFileWrapper,.savedFileWrapper{
+    width: 32%;
+    background-color:white;
+    height: 8rem;
+    //  #e7e8eb
+    border:#e7e8eb ;
+    border-radius: 0.5rem;
+    border-width: 2px;
+    border-style: solid;
+    padding-left: 1.5rem;
+    padding-top: 1.5rem;
+}
+.uploadedFileIcon,.transcribedFileIcon, .savedFileIcon{
+    width: 2rem;
+    height: 2rem;
+    
+    border-style: solid;
+    border-color: #e7e8eb;
+    border-width: 2px;
+    border-radius: 2rem;
+    
+}
+.uploadedFileCount, .savedFileCount,.transcribedFileCount{
+    font-weight: 600;
+    line-height: 3rem;
+    font-size: 1.5rem;
+}
+.dashboardUsername{
+    font-weight: 600;
+    font-size: 1.8rem;
+    padding-bottom: 0.5rem;
+}
+.thirdRow{
+    background-color: white;
+    padding-left: 1.5rem;
+    padding-top: 1.5rem;
+    border-radius: 1rem;
+}
+.dashboardHdng{
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding-bottom: 1rem;
+}
+.tableHdngRow{
+    padding-top: 1.2rem;
+}
+.formWrapper{
+    width: 95%;
+    height: 100%;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    padding-top: 2rem;
+
+}
+.formFirstBox{
+    display: flex;
+    justify-content: space-between;
+   
+}
+.formHdng{
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding-bottom: 2rem;   
+}
+.languageHdng,.linkHdng{
+    font-size: 1rem;
+    font-weight: 500;
+    padding-bottom: 1rem;
+}
+.languageWrapper{
+    padding-bottom: 1rem;
+}
+.FilesWrapper{
+    height: 8rem;
+    width: 100%;
+   margin-top: 1rem;
+   margin-bottom: 2rem;
+    display: grid;
+    place-items: center;
+
+}
+.linkWrapper{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+.linkInput{
+    width: 97%;
+    height: 2rem;
+    border-color:#e7e8eb;
+    border-style: solid;
+}
+.submitButton{
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}

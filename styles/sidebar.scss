@@ -1,0 +1,31 @@
+.sidebarRow{
+    display: flex;
+}
+.sidebar{
+    width: 16rem;
+    background-color:white;
+    height: 100%;
+    padding-top: 1rem;
+}
+.sidebarHdng{
+    text-align: start;
+    padding-left: 4rem;
+    color: blue;
+    font-weight: 700;
+    font-size: 1.1rem;
+
+}
+.sidebarWrapper{
+    margin-top: 2rem;
+}
+.sidebarRow{
+    height: 2rem;
+    padding-left: 2rem;
+    padding-bottom: 1.5rem;
+
+}
+.sidebarOptions{
+text-align: center;
+padding-left: 0.8rem;
+padding-top: 0.1rem;
+}
