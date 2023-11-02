@@ -1,11 +1,14 @@
-import React from "react";
+import {React, useState} from "react";
 import { useDropzone } from "react-dropzone";
 import CloudUploadOutlinedIcon from '@mui/icons-material/CloudUploadOutlined';
 
 function Dropzone({ open }) {
+  const[link,setLink]=useState(null);
     const { getRootProps, getInputProps, acceptedFiles } =
-      useDropzone({});
-  
+      useDropzone({
+        
+      });
+  console.log(link);
     const files = acceptedFiles.map((file) => (
       <li key={file.path}>
         {file.path} - {file.size} bytes
@@ -15,12 +18,12 @@ function Dropzone({ open }) {
     return (
       <div className="container">
         <div {...getRootProps({ className: "dropzone" })}>
-          <input {...getInputProps()} />
+          <input {...getInputProps()} value={link} onChange={(e) => setLink(e.target.files[0])} />
           <p><CloudUploadOutlinedIcon/>
             Drag 'n' drop some files here<br></br></p>
-          <button type="button" onClick={open} className="btn">
+          {/* <button type="button" onClick={open} className="btn" >
 Click to select files
-</button>
+</button> */}
         </div>
         <aside>
           <ul>{files}</ul>
