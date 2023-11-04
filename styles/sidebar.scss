@@ -21,8 +21,15 @@
 .sidebarRow{
     height: 2rem;
     padding-left: 2rem;
-    padding-bottom: 1.5rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    text-align: center;
 
+ 
+}
+.sidebarWrapper> div:hover{
+    background-color: blue;
+    border-radius: 1rem;
 }
 .sidebarOptions{
 text-align: center;

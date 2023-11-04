@@ -18,11 +18,12 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { useDropzone } from "react-dropzone";
 import CloudUploadOutlinedIcon from '@mui/icons-material/CloudUploadOutlined';
-import Dropzone from "./dropzone";
+// import Dropzone from "./dropzone";
 import axios from "axios";
-import Forms from "./form";
-import { Upload } from "@mui/icons-material";
+// import Forms from "./form";
+// import { Upload } from "@mui/icons-material";
 const apiKey = process.env.OPEN_API_URL_KEY;
+const dropboxkey = process.env.DROPBOX_ACCESS_TOKEN
 
 const assembly = axios.create({
   baseURL: "https://api.assemblyai.com/v2",
@@ -41,6 +42,10 @@ const PopupExample = () => (
   </Popup>
 );
 export default function Dashboard() {
+  const [status, setStatus] = useState('');
+  const [fileLink, setFileLink] = useState('');
+  const [assemblyAiApiKey, setAssemblyAiApiKey] = useState(apiKey);
+
   const [searchInput, setSearchInput] = useState("");
   const [language, setLanguage] = useState('');
   const [transcription, setTranscription] = useState(null);
@@ -52,7 +57,48 @@ export default function Dashboard() {
   const closeModal = () => setOpen(false);
   const myDropzone = useDropzone();
 
-  
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      uploadFileToDropbox(file);
+    }
+  };
+  const uploadFileToDropbox = (file) => {
+    const dbx = new dropbox.Dropbox({ accessToken: dropboxkey });
+
+    dbx.filesUpload({
+      path: '/' + file.name,
+      contents: file,
+    })
+    .then((response) => {
+      setFileLink(response.result.path_display);
+      setStatus('File uploaded to Dropbox. Ready to transcribe.');
+    })
+    .catch((error) => {
+      console.error('Error uploading file to Dropbox', error);
+      setStatus('Error uploading file to Dropbox. Please try again.');
+    });
+};
+const transcribeFile = async () => {
+  try {
+    const response = await axios.post(
+      'https://api.assemblyai.com/v2/transcript',
+      { audio_url: `https://www.dropbox.com${fileLink}?raw=1` },
+      {
+        headers: {
+          Authorization: assemblyAiApiKey,
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+
+    const transcriptId = response.data.id;
+    setStatus(`Transcription initiated successfully. Transcript ID: ${transcriptId}`);
+  } catch (error) {
+    console.error('Error initiating transcription', error);
+    setStatus('Error initiating transcription. Please try again.');
+  }
+};
   // const [audioFile, setAudioFile] = useState(null);
   // const handleFileChange = (e) => {
   //   const file = e.target.files[0];
@@ -191,14 +237,15 @@ export default function Dashboard() {
             <div>
               <button className="transcribeButton" onClick={() => setOpen(o => !o)} >Transcribe File</button>
               <Popup
-                contentStyle={{ width: '60%', height: '80%', borderRadius: '2rem' }} open={open} closeOnDocumentClick onClose={closeModal} className="popup">
+                contentStyle={{ width: '60%', height: '80%', borderRadius: '2rem' }} 
+                open={open} closeOnDocumentClick onClose={closeModal} className="popup">
                 <div className="formWrapper">
                   <div className="formFirstBox">
                     <div className="formHdng">
                       Transcribe File
                     </div>
-                    <div className="formClose">
-                      <ClearOutlinedIcon />
+                    <div className="formClose"  onClick={closeModal} >
+                      <ClearOutlinedIcon  />
                     </div>
                   </div>
                   <div className="forminputs">
@@ -214,7 +261,7 @@ export default function Dashboard() {
                     <div className="FilesWrapper">
                     <div className="container">
         <div {...getRootProps({ className: "dropzone" })}>
-          <input {...getInputProps()}  />
+          <input {...getInputProps()} onChange={handleFileChange} />
           <p><CloudUploadOutlinedIcon/>
             Drag 'n' drop some files here<br></br></p>
           {/* <button type="button" onClick={open} className="btn" >
@@ -242,7 +289,7 @@ Click to select files
                     </div>
                   </div>
                   <div className="submitButton">
-                    <button className="submitForm" onClick={showdata} > Transcribe File </button>
+                    <button className="submitForm" onClick={transcribeFile} > Transcribe File </button>
                   </div>
 
 
@@ -294,6 +341,9 @@ Click to select files
             </div>
             <hr size='1px' color="#E4E7EC" />
             <div className="tableHdngRow">
+            <div className="tableHdng">
+              <input type="checkbox" className="checkBox"></input>
+              </div>
               <div className="tableHdng">
                 Name
               </div>
@@ -317,6 +367,9 @@ Click to select files
             {dashboardData.map(item => (<>
               <hr size='1px' color="#E4E7EC" />
               <div className="tableHdngRow">
+                <div className="tabledata">
+              <input type="checkbox" className="checkBox"></input>
+              </div>
                 <div className="tabledata">
                   {item.Name}
                 </div>

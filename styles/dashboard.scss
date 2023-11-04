@@ -40,6 +40,9 @@
 .reminders{
     width: 2rem;
     height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #c2c9d5;
     border-radius: 1rem;
     text-align: center;
@@ -54,6 +57,7 @@
     justify-content: space-between;
     padding-right: 3rem;
 }
+
 .landngPageSecondBox{
     background-color: #e7e8eb;
     padding-right: 4rem;
@@ -110,7 +114,9 @@
 .uploadedFileIcon,.transcribedFileIcon, .savedFileIcon{
     width: 2rem;
     height: 2rem;
-    
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-style: solid;
     border-color: #e7e8eb;
     border-width: 2px;
@@ -190,4 +196,30 @@
     justify-content: center;
     align-items: center;
     align-self: center;
+}
+input.checkBox{
+    width : 1.1rem;
+    height : 1.1rem;
+}
+.submitForm{
+    width: 9rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e7e8eb;
+    border: none;
+    margin: auto;
+    font: Inter;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+.formClose:hover{
+    cursor: pointer;
+}
+.submitForm:hover{
+    cursor: pointer;
+   background-color: blue;
+   border: none;
+
 }
