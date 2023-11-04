@@ -142,8 +142,11 @@ const transcribeFile = async () => {
         {file.path} - {file.size} bytes
       </li>
     ));
+    
+    const handleSearchChange = (e) => {
+      setSearchInput(e.target.value);
+    };
     const handleChange = (e) => {
-     
       setLanguage(e);
     };
 
@@ -204,7 +207,7 @@ const transcribeFile = async () => {
             <div>    <input type="search"
               placeholder="Search here..."
               className="searchBar"
-              onChange={handleChange}
+              onChange={handleSearchChange}
               value={searchInput} />
             </div>
           </div>
