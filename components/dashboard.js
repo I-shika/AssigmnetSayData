@@ -1,7 +1,6 @@
 "use client";
 import React, {
   useState,
-  useEffect
 } from "react";
 require('dotenv').config();
 import Image from 'next/image'
